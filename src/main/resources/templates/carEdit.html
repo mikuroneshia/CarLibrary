@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Carlibrary/変更</title>
+</head>
+<body>
+<h1>変更</h1>
+<hr/>
+<p th:text="${message}">
+<hr/>
+<form action="edit" method="post" th:object="${cModel}">
+ID：<input type="text" name="id" th:value="${cModel.id}">
+名前：<input type="text" name="name" th:value="${cModel.name}">
+車種：<input type="text" name="car_type" th:value="${cModel.car_type}">
+メーカー：<input type="text" name="maker" th:value="${cModel.maker}"><br/>
+年式:<input type="text" name="model" th:value="${cModel.model}"><br/>
+排気量：<input type="text" name="displacement" th:value="${cModel.displacement}">
+燃料：<input type="text" name="fuel" th:value="${cModel.fuel}">
+燃費(WLTC)：<input type="text" name="fuel_economy" th:value="${cModel.fuel_economy}">
+駆動方式：<input type="text" name="drive_system" th:value="${cModel.drive_system}"><br/>
+値段：<input type="text" name="price" th:value="${cModel.price}">
+全長：<input type="text" name="length" th:value="${cModel.length}">
+幅：<input type="text" name="width" th:value="${cModel.width}">
+全高：<input type="text" name="height" th:value="${cModel.height}"><br/>
+<input type="submit" value="変更"><br/>
+<a href="">検索画面へ</a>
+</form>
+</body>
+</html>

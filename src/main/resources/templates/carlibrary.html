@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>CarLibraly/検索</title>
+</head>
+<body>
+<h1>検索</h1>
+<hr/>
+<p th:text="${message}"></p>
+<hr/>
+<form action="" method="post" th:object="${cModel}">
+<!-- ID :<input type="text" name="id"><br/> -->
+<table >
+<tr>
+<td>名前:<input type="text" name="name">
+<td>車種:<input type="text" name="car_type">表示<input type="radio" name="pCar_type" value="true" checked>非表示<input type="radio" name="pCar_type" value="false" >
+<td>メーカー<input type="text" name="maker">表示<input type="radio" name="pMaker" value="true" checked>非表示<input type="radio" name="pMaker" value="false" >
+</tr>
+<tr>
+<td>排気量:<input type="text" name="displacement">表示<input type="radio" name="pDisplacement" value="true" checked>非表示<input type="radio" name="pDisplacement" value="false" >
+<td>年式:<input type="text" name="model">表示<input type="radio" name="pModel" value="true" checked>非表示<input type="radio" name="pModel" value="false" >
+<td>燃料:<input type="text" name="fuel">表示<input type="radio" name="pFuel" value="true" checked>非表示<input type="radio" name="pFuel" value="false" >
+</tr>
+<tr>
+<td>燃費:<input type="text" name="fuel_economy">表示<input type="radio" name="pFuel_economy" value="true" checked>非表示<input type="radio" name="pFuel_economy" value="false" >
+<td>駆動方式:<input type="text" name="drive_system">表示<input type="radio" name="pDrive_system" value="true" checked>非表示<input type="radio" name="pDrive_system" value="false" >
+<td>値段:<input type="text" name="price">表示<input type="radio" name="pPrice" value="true" checked>非表示<input type="radio" name="pPrice" value="false" >
+</tr>
+<tr>
+<td>全長:<input type="text" name="length">表示<input type="radio" name="pLength" value="true" checked>非表示<input type="radio" name="pLength" value="false" >
+<td>幅:<input type="text" name="width">表示<input type="radio" name="pWidth" value="true" checked>非表示<input type="radio" name="pWidth" value="false" >
+<td>全高:<input type="text" name="height">表示<input type="radio" name="pHeight" value="true" checked>非表示<input type="radio" name="pHeight" value="false" >
+</tr>
+</table>
+
+<input type="submit" value="検索">
+<input type="submit" value="全件検索" name="all">
+</form>
+<a href="regist">登録</a>
+<hr/>
+<table border="1" >
+<tr><th th:if="${cModel.pId}">ID<th th:if="${cModel.pName}" width="100">名前<th width="100" th:if="${cModel.pCar_type}">車種<th width="100" th:if="${cModel.pMaker}">メーカー
+<th width="100" th:if="${cModel.pModel}">年式<th width="100" th:if="${cModel.pDisplacement}">排気量
+<th th:if="${cModel.pFuel}">燃料<th th:if="${cModel.pFuel_economy}">燃費(WLTC)<th th:if="${cModel.pDrive_system}">駆動方式
+<th th:if="${cModel.pPrice}">値段<th th:if="${cModel.pLength}">全長<th th:if="${cModel.pWidth}">幅<th th:if="${cModel.pHeight}">全高</tr>
+<tr th:each="entity:${list}" align="center">
+<td th:text="${entity.id}" th:if="${cModel.pId}"></td>
+<td th:text="${entity.name}" th:if="${cModel.pName}"></td>
+<td th:text="${entity.car_type}" th:if="${cModel.pCar_type}"></td>
+<td th:text="${entity.maker}" th:if="${cModel.pMaker}"></td>
+<td th:text="${entity.model}" th:if="${cModel.pModel}"></td>
+<td th:text="${entity.displacement}" th:if="${cModel.pDisplacement}"></td>
+<td th:text="${entity.fuel}" th:if="${cModel.pFuel}"></td>
+<td th:text="${entity.fuel_economy}" th:if="${cModel.pFuel_economy}"></td>
+<td th:text="${entity.drive_system}" th:if="${cModel.pDrive_system}"></td>
+<td th:text="${entity.price}" th:if="${cModel.pPrice}"></td>
+<td th:text="${entity.length}"  th:if="${cModel.pLength}"></td>
+<td th:text="${entity.width}" th:if="${cModel.pWidth}"></td>
+<td th:text="${entity.height}" th:if="${cModel.pHeight}"></td>
+<td><a href="edit" th:href="@{edit(id=${entity.id})}">変更</a></td>
+</tr>
+</table>
+</body>
+</html>

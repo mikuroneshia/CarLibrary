@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>登録</h1>
+<hr/>
+<form action="regist" method="post" th:object="${cModel}">
+<!-- ID :<input type="text" name="id"><br/> -->
+名前:<input type="text" name="name"><br/>
+車種:<input type="text" name="car_type"><br/>
+メーカー:<input type="text" name="maker"><br/>
+年式:<input type="text" name="model"><br/>
+排気量:<input type="text" name="displacement"><br/>
+燃料:<input type="text" name="fuel"><br/>
+燃費(WLTC):<input type="text" name="fuel_economy"><br/>
+駆動方式:<input type="text" name="drive_system"><br/>
+値段:<input type="text" name="price"><br/>
+全長:<input type="text" name="length"><br/>
+幅:<input type="text" name="width"><br/>
+全高:<input type="text" name="height"><br/>
+<input type="submit" value="登録"><br/>
+<a href="">検索画面へ</a>
+</form>
+<hr/>
+<table border="1" width="600">
+<tr><th>ID</th><th >名前</th><th >車種</th><th>メーカー</th><th>年式</tr>
+<tr th:each="entity:${list}" align="center">
+<td th:text="${entity.id}"></td>
+<td th:text="${entity.name}"></td>
+<td th:text="${entity.car_type}"></td>
+<td th:text="${entity.maker}"></td>
+<td th:text="${entity.model}"></td>
+</tr>
+</table>
+</body>
+</html>
